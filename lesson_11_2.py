@@ -23,16 +23,34 @@ def test_basic():
     navigation_bar = NavigationBar(browser)
     # sequential clicking on all new elements
     navigation_bar.show_printers()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "Printers"
+
     time.sleep(delay_between_pages)
     navigation_bar.show_scanners()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "Scanners"
+
     time.sleep(delay_between_pages)
     navigation_bar.show_webcams()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "Web Cameras"
+
     time.sleep(delay_between_pages)
     navigation_bar.show_all_phones_and_pdas()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "Phones & PDAs"
+
     time.sleep(delay_between_pages)
     navigation_bar.show_pdas()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "PDAs"
+
     time.sleep(delay_between_pages)
     navigation_bar.show_phones()
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+    assert section_title == "Phones"
+
     time.sleep(delay_between_pages)
 
     time.sleep(3)
@@ -48,6 +66,10 @@ def test_all_pc():
     # showing all PCs
     navigation_bar = NavigationBar(browser)
     navigation_bar.show_pcs()
+
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+
+    assert section_title == "PC"
 
     # calculating number of products in PC category
     number_of_products = len(driver.find_elements_by_class_name("product-thumb"))
@@ -75,6 +97,10 @@ def test_all_macs():
     # calculating number of products in PC category
     number_of_products = len(driver.find_elements_by_class_name("product-thumb"))
 
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+
+    assert section_title == "Mac"
+
     assert number_of_products == number_from_option
 
     time.sleep(3)
@@ -89,6 +115,10 @@ def test_all_desktops():
     # showing all desktops
     navigation_bar = NavigationBar(browser)
     navigation_bar.show_all_desktops()
+
+    section_title = Element(browser, By.XPATH, "//*[@id='content']/h2").get_text()
+
+    assert section_title == "Desktops"
 
     time.sleep(3)
     browser.shutdown()
